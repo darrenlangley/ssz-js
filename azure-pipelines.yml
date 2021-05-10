@@ -11,7 +11,8 @@ pool:
 
 steps:
 - bash: |
-   ruby --version
+   eval $(ruby -e "require 'openssl'; require 'jwt'; private_key = OpenSSL::PKey::RSA.new($(GITHUB_APP_PEM)); payload = { iat: Time.now.to_i - 60, exp: Time.now.to_i + (10 * 60), iss: 'BLAH' }; jwt = JWT.encode(payload, private_key, 'RS256'); puts 'PUSH_JWT='+jwt;")
+- bash: echo $PUSH_JWT
 - bash: |
    git push --prune https://github.com/$REPO_NAME \
         +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
