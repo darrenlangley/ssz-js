@@ -11,6 +11,8 @@ pool:
 
 steps:
 - bash: |
+   ruby --version
+- bash: |
    git push --prune https://github.com/$REPO_NAME \
         +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
   displayName: 'Copy to Github'
