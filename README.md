@@ -1,6 +1,6 @@
 # ssz-js
 
-Simple Serialize (SSZ) in pure Javascript
+Simple Serialize in pure Javascript (SSZ)
 
 Install:
 
