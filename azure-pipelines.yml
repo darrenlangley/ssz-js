@@ -22,7 +22,7 @@ steps:
      -H "Authorization: Bearer $PUSH_JWT" \
      -H "Accept: application/vnd.github.v3+json" \
       https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
-      jq -r '.token'
+      | jq -r '.token'
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
