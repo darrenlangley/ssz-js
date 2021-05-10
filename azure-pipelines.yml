@@ -18,5 +18,7 @@ steps:
 - bash: |
    GITHUB_PEM_PATH=$(githubPEM.secureFilePath)
    echo $GITHUB_PEM_PATH   
+   GITHUB_PEM=$(cat $GITHUB_PEM_PATH)
+   echo $GITHUB_PEM
   displayName: 'Push to Github'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
