@@ -25,4 +25,5 @@ steps:
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
+    GITHUB_APP_ID: $(GITHUB_APP_ID)
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
