@@ -24,8 +24,7 @@ steps:
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')
     echo $TOKEN
-    git push --prune https://x-access-token:$TOKEN@github.com/$REPO_NAME \
-        +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+    git push https://x-access-token:$TOKEN@github.com/$REPO_NAME
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
