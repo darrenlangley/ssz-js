@@ -17,4 +17,6 @@ steps:
    git push --prune https://github.com/$REPO_NAME \
         +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
   displayName: 'Copy to Github'
+  env:
+    GITHUB_PEM: $(GITHUB_PEM)
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
