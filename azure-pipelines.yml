@@ -17,6 +17,7 @@ steps:
     secureFile: 'github.pem'
 - bash: |   
    eval $(ruby -e "require 'openssl'; require 'jwt'; private_pem = File.read(ENV['GITHUB_PEM_PATH']); private_key = OpenSSL::PKey::RSA.new(private_pem); payload = { iat: Time.now.to_i - 60, exp: Time.now.to_i + (10 * 60), iss: 'BLAH' }; jwt = JWT.encode(payload, private_key, 'RS256'); puts 'PUSH_JWT='+jwt;")
+   echo $PUSH_JWT
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
