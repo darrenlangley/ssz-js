@@ -10,12 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: |   
+- task: DownloadSecureFile@1
+  name: githubPEM
+  displayName: 'Download Github PEM'
+  inputs:
+    secureFile: 'github.pem'
+- bash: |
+   GITHUB_PEM=$(cat $(githubPEM.secureFilePath))
    eval $(ruby -e "require 'openssl'; require 'jwt'; private_key = OpenSSL::PKey::RSA.new(ENV['GITHUB_PEM']); payload = { iat: Time.now.to_i - 60, exp: Time.now.to_i + (10 * 60), iss: 'BLAH' }; jwt = JWT.encode(payload, private_key, 'RS256'); puts 'PUSH_JWT='+jwt;")
    echo $PUSH_JWT
    git push --prune https://github.com/$REPO_NAME \
         +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
-  displayName: 'Copy to Github'
-  env:
-    GITHUB_PEM: $(GITHUB_PEM)
+  displayName: 'Push to Github'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
