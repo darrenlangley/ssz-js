@@ -25,8 +25,8 @@ steps:
      -H "Accept: application/vnd.github.v3+json" \
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')
-    git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME
-    git remote -v
+    git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME    
+    git diff master remotes/github/master
     git push github --all --verbose
     git push github --tags --verbose
   displayName: 'Push to Github'
