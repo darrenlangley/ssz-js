@@ -6,8 +6,7 @@
 trigger:
  branches:
   include:
-    - master
-    - features/*
+    - master    
 
 pool:
   vmImage: ubuntu-latest
@@ -26,11 +25,9 @@ steps:
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')
     git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME    
-    git fetch github
-    git branch -a
-    git diff HEAD remotes/github/master
-    git push github --all --verbose
-    git push github --tags --verbose
+    git fetch github        
+    git push github HEAD:master --all --verbose
+    git push github HEAD:master --tags --verbose
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
