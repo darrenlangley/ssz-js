@@ -26,6 +26,7 @@ steps:
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')
     git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME    
+    git fetch github
     git branch -a
     git diff HEAD remotes/github/master
     git push github --all --verbose
