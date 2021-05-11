@@ -22,8 +22,8 @@ steps:
      -H "Accept: application/vnd.github.v3+json" \
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')    
-    git push https://x-access-token:$TOKEN@github.com/$REPO_NAME --all
-    git push https://x-access-token:$TOKEN@github.com/$REPO_NAME --tags
+    git push https://x-access-token:$TOKEN@github.com/$REPO_NAME --all --verbose
+    git push https://x-access-token:$TOKEN@github.com/$REPO_NAME --tags --verbose
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
