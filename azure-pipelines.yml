@@ -26,7 +26,8 @@ steps:
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')
     git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME    
-    git fetch github        
+    git fetch github
+    git branch -a
     git push github HEAD:$(Build.SourceBranch) --verbose
     git push github HEAD:$(Build.SourceBranch) --tags --verbose
   displayName: 'Push to Github'
