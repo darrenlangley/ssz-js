@@ -26,12 +26,11 @@ steps:
      https://api.github.com/app/installations/$GITHUB_APP_INSTALLATION_ID/access_tokens \
      | jq -r '.token')
     git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME
-    git remote
+    git remote -v
     git push github --all --verbose
     git push github --tags --verbose
   displayName: 'Push to Github'
   env:
     GITHUB_PEM_PATH: $(githubPEM.secureFilePath)
     GITHUB_APP_ID: $(GITHUB_APP_ID)
-    GITHUB_APP_INSTALLATION_ID: 16830466
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    GITHUB_APP_INSTALLATION_ID: 16830466  
