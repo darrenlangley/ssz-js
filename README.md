@@ -2,7 +2,7 @@
 
 Simple Serialize in pure Javascript (SSZ)
 
-FEATURE 2 CHANGE 1
+FEATURE 2 CHANGE 2
 
 Install:
 
