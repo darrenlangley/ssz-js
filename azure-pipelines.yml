@@ -26,7 +26,7 @@ steps:
      | jq -r '.token')
     git remote add github https://x-access-token:$TOKEN@github.com/$REPO_NAME    
     git fetch github        
-    git push github HEAD:master --all --verbose
+    git push github HEAD:master --verbose
     git push github HEAD:master --tags --verbose
   displayName: 'Push to Github'
   env:
