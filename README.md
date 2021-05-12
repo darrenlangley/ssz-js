@@ -2,8 +2,6 @@
 
 Simple Serialize in pure Javascript (SSZ)
 
-SOME PR CHANGE
-
 Install:
 
 ```bash
