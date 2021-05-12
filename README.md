@@ -2,6 +2,8 @@
 
 Simple Serialize in pure Javascript (SSZ)
 
+TEST BRANCH
+
 Install:
 
 ```bash
